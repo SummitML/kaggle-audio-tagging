@@ -3,6 +3,66 @@ SummitML Kaggle Audio Tagging
 
 This is the group repository for [Freesound General-Purpose Audio Tagging Challenge](https://www.kaggle.com/c/freesound-audio-tagging)
 
+## Contributing
+
+##### Downloading the Repository
+
+1. With [Git](https://git-scm.com/downloads) installed, clone this repository.
+
+  If you're using the command line interface...
+
+  ```bash
+  git clone https://github.com/SummitML/kaggle-audio-tagging.git
+  ```
+
+##### Downloading the Kaggle Data
+
+1. Create a directory at the root of your project called **data**
+
+  ```bash
+  cd /path/to/kaggle-audio-tagging/
+  mkdir data
+  ```
+
+1. Download project data files from [Kaggle](https://www.kaggle.com/c/freesound-audio-tagging/data)
+
+1. Find your downloaded files and move them into your newly created `data` directory.
+
+  ```bash
+  mv /path/to/downloaded/file /path/to/kaggle-audio-tagging/data
+  ```
+
+##### Installing Dependencies
+
+**Python**
+
+There are various ways to install Python. Python3 is recommended for this project.
+
+- [Python.org](https://www.python.org/downloads/)
+
+- [Homebrew](https://docs.brew.sh/Homebrew-and-Python)
+
+
+With Python installed, run your virtual environment locally...
+
+```bash
+pip install virtualenv
+```
+
+```bash
+virtualenv venv
+source venv/bin/activate
+```
+To install required dependencies, run...
+
+
+```bash
+make requirements
+```
+
+
+
+
 Project Organization
 ------------
 
