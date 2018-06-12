@@ -59,7 +59,7 @@ Project Organization
 
 ## Contributing
 
-##### Downloading the Repository
+### Downloading the Repository
 
 1. With [Git](https://git-scm.com/downloads) installed, clone this repository. If you're using the command line interface run...
 
@@ -67,7 +67,7 @@ Project Organization
   git clone https://github.com/SummitML/kaggle-audio-tagging.git
   ```
 
-##### Downloading the Kaggle Data
+### Downloading the Kaggle Data
 
 1. Create a directory at the root of your project called **data**
 
@@ -84,7 +84,7 @@ Project Organization
   mv /path/to/downloaded/file /path/to/kaggle-audio-tagging/data
   ```
 
-##### Installing Dependencies
+### Installing Dependencies
 
 **Python**
 
@@ -94,21 +94,36 @@ There are various ways to install Python. Python3 is recommended for this projec
 
 - [Homebrew](https://docs.brew.sh/Homebrew-and-Python)
 
-**Virtualenv**
+**Running the Virtual Environment **
 
-With Python installed, run your virtual environment locally...
+With Python (and [PIP](https://pypi.org/)) installed, you're now ready to install a virtual environment and run it locally...
+
+With [Pipenv](https://docs.pipenv.org/
+)...
 
 ```bash
-pip install virtualenv
+pip install pipenv
+pipenv install
+pipenv shell
 ```
 
+*Note: When adding new dependencies to the project with Pipenv, remember to [generate](https://docs.pipenv.org/advanced/#generating-a-requirements-txt) an updated `requirements.txt` for teammates not using Pipenv*
+
+With [Virtualenv](https://virtualenv.pypa.io/en/stable/)...
 ```bash
-virtualenv venv
-source venv/bin/activate
+virtualenv venv # -> creates local environment
+source venv/bin/activate # -> activates shell
+pip install -r requirements.txt # -> dependencies
 ```
-To install required dependencies, run...
 
+With [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)...
 
 ```bash
-make requirements
+make create_environment
+```
+
+Once inside an isolated virtual environment (using any of the methods above), you can confirm your environment was set up correctly by running the provided `make` command...
+
+```bash
+make test_environment
 ```
