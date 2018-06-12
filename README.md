@@ -94,7 +94,7 @@ There are various ways to install Python. Python3 is recommended for this projec
 
 - [Homebrew](https://docs.brew.sh/Homebrew-and-Python)
 
-**Running the Virtual Environment **
+**Running the Virtual Environment**
 
 With Python (and [PIP](https://pypi.org/)) installed, you're now ready to install a virtual environment and run it locally...
 
@@ -127,3 +127,7 @@ Once inside an isolated virtual environment (using any of the methods above), yo
 ```bash
 make test_environment
 ```
+
+**Git Workflow**
+
+Please reference Atlassians tutorial on the [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
