@@ -128,6 +128,16 @@ Once inside an isolated virtual environment (using any of the methods above), yo
 make test_environment
 ```
 
-**Git Workflow**
+### Git Workflow
 
 Please reference Atlassians tutorial on the [Git Feature Branch Workflow](https://www.atlassian.com/git/tutorials/comparing-workflows/feature-branch-workflow).
+
+**Branching Strategy**
+
+For the purposes of this project, we'll rely on three primary branch types.
+
+- Feature Branches - A working branch created by any team member for independent or paired development
+
+- Develop - A reserved branch for code that has been peer reviewed and is production ready
+
+- Master - A restricted branch that represents deployed production code
