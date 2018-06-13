@@ -2,6 +2,8 @@ SummitML Kaggle Audio Tagging
 ==============================
 
 This is the group repository for [Freesound General-Purpose Audio Tagging Challenge](https://www.kaggle.com/c/freesound-audio-tagging)
+# Team Members
+- rams
 
 # Team Members
 - Chang
