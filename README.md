@@ -5,6 +5,7 @@ This is the group repository for [Freesound General-Purpose Audio Tagging Challe
 
 # Team Members
 - Chang
+- Carlos
 
 Project Organization
 ------------
