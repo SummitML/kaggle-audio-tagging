@@ -115,11 +115,21 @@ pipenv shell
 *Note: When adding new dependencies to the project with Pipenv, remember to [generate](https://docs.pipenv.org/advanced/#generating-a-requirements-txt) an updated `requirements.txt` for teammates not using Pipenv*
 
 With [Virtualenv](https://virtualenv.pypa.io/en/stable/)...
+
+For Mac:
 ```bash
 virtualenv venv # -> creates local environment
 source venv/bin/activate # -> activates shell
 pip install -r requirements.txt # -> dependencies
 ```
+
+For Windows:
+```bash
+virtualenv venv # -> creates local environment
+source venv/Scripts/activate # -> activates shell
+pip install -r requirements.txt # -> dependencies
+```
+
 
 With [Virtualenvwrapper](https://virtualenvwrapper.readthedocs.io/en/latest/)...
 
