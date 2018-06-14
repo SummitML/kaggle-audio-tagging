@@ -11,6 +11,17 @@ awscli = "*"
 python-dotenv = ">=0.5.1"
 Sphinx = "*"
 pytest = "*"
+numpy = "*"
+scipy = "*"
+matplotlib = "*"
+ipython = "*"
+jupyter = "*"
+pandas = "*"
+sympy = "*"
+nose = "*"
+pyyaml = "*"
+jupyterlab = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
