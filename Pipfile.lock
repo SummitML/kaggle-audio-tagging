@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "37b3af4d7d5104eb30b4cd8f04fe66a9311e82b09714c0085caae61cf7355c17"
+            "sha256": "629bc60427294d683d4f95121e325ce4164ada4245da3c47d88ec23ec157e7c6"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -16,10 +16,6 @@
         ]
     },
     "default": {
-        "34a9ee3": {
-            "editable": true,
-            "path": "/Users/carlos/Repos/kaggle-audio-tagging"
-        },
         "alabaster": {
             "hashes": [
                 "sha256:2eef172f44e8d301d25aff8068fddd65f767a3f04b5f15b0f4922f113aa1c732",

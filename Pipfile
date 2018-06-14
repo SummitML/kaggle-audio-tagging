@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"34a9ee3" = {path = "/Users/carlos/Repos/kaggle-audio-tagging", editable = true}
 click = "*"
 coverage = "*"
 awscli = "*"
