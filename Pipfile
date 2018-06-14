@@ -4,7 +4,6 @@ verify_ssl = true
 name = "pypi"
 
 [packages]
-"34a9ee3" = {path = "/Users/carlos/Repos/kaggle-audio-tagging", editable = true}
 click = "*"
 coverage = "*"
 awscli = "*"
@@ -12,6 +11,17 @@ awscli = "*"
 python-dotenv = ">=0.5.1"
 Sphinx = "*"
 pytest = "*"
+numpy = "*"
+scipy = "*"
+matplotlib = "*"
+ipython = "*"
+jupyter = "*"
+pandas = "*"
+sympy = "*"
+nose = "*"
+pyyaml = "*"
+jupyterlab = "*"
+scikit-learn = "*"
 
 [dev-packages]
 
