@@ -22,6 +22,7 @@ nose = "*"
 pyyaml = "*"
 jupyterlab = "*"
 scikit-learn = "*"
+pexpect = "*"
 
 [dev-packages]
 
