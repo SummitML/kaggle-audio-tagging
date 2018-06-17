@@ -19,11 +19,11 @@ jupyter = "*"
 pandas = "*"
 sympy = "*"
 nose = "*"
-pyyaml = "*"
 jupyterlab = "*"
 scikit-learn = "*"
 
 [dev-packages]
+PyYAML = {path = ".\\..\\PyYAML-3.12-cp36-cp36m-win32.whl"}
 
 [requires]
 python_version = "3.6"
