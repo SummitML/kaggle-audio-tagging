@@ -1,13 +1,14 @@
 import os
 import csv
 
-def paths_for_tags(csv_path:str, filters:list=[]) -> list:
+def find_paths_with_tags(csv_path:str, filters:list=[]) -> list:
     """
     Returns a list a of file paths
     filtered by a specified list of tags
 
     Usage:
-    saxophone_paths = paths_for_tags('path/to/file.csv', ['Saxophone'])
+    from src.util import find_paths_with_tags
+    saxophone_paths = find_paths_with_tags('path/to/file.csv', ['Saxophone'])
     # => ['1234.wav']
     """
     with open(csv_path, mode='r') as file:
