@@ -83,3 +83,6 @@ target/
 
 # Virtualenv
 venv/
+
+# Pytest
+.pytest_cache
