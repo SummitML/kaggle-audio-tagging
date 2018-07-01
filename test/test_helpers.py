@@ -41,3 +41,7 @@ class TestHelpersMod(object):
 
         train_wav_inputs = load_wav_files(all_farts)
         assert len(train_wav_inputs) == 2
+
+        # assert wav base 0 is n dimensional array
+        sample = train_wav_inputs[0]
+        assert isinstance(numpy.ndarray, sample.wav[0])

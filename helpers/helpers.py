@@ -47,7 +47,13 @@ def _load_wav(duration:int, wav:dict) -> namedtuple:
     and a librosa loaded wav file (array)
     """
     print(f'{wav["name"]}...')
-    return Wav(name=wav['name'], wav=librosa.load(wav['path'], duration=duration))
+
+    # foo = librosa.load('../../data/external/audio_train/01302128.wav')
+    # print(foo[0])
+    # print(foo[0].shape)
+
+    librosa_loaded_wav = librosa.load(wav['path'], duration=duration)
+    return Wav(name=wav['name'], wav=librosa_loaded_wav)
 
 def load_wav_files(paths:list, duration:int=15) -> list:
     """
