@@ -46,3 +46,15 @@ class TestHelpersMod(object):
         # assert wav base 0 is n dimensional array
         sample = train_wav_inputs[0]
         assert isinstance(sample.wav[0], numpy.ndarray)
+
+    def test_normalize_audio(self):
+        all_cellos = find_paths_with_tags(self.TRAIN_CSV,
+                                         self.TRAIN_FILES,
+                                         ['Cello'],
+                                         limit=2)
+
+        train_wav_inputs = load_wav_files(all_cellos)
+
+        normalizer = NormalizeAudio(train_wav_inputs)
+        train_wav_inputs_1s = normalizer.sample_rate(22050)
+        assert [x.wav.shape[0] for x in train_wav_inputs_1s] == [22050, 22050]

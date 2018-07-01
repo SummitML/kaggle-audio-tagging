@@ -39,7 +39,7 @@ def find_paths_with_tags(csv_path:str, files_path:str, filters:list=[], limit:in
         return files
 
 
-Wav = namedtuple('Wav', 'name wav')
+Wav = namedtuple('Wav', 'name wav label')
 
 def _load_wav(duration:int, wav:dict) -> namedtuple:
     """
@@ -47,13 +47,8 @@ def _load_wav(duration:int, wav:dict) -> namedtuple:
     and a librosa loaded wav file (array)
     """
     print(f'{wav["name"]}...')
-
-    # foo = librosa.load('../../data/external/audio_train/01302128.wav')
-    # print(foo[0])
-    # print(foo[0].shape)
-
     librosa_loaded_wav = librosa.load(wav['path'], duration=duration)
-    return Wav(name=wav['name'], wav=librosa_loaded_wav)
+    return Wav(name=wav['name'], wav=librosa_loaded_wav, label=wav['tag'])
 
 def load_wav_files(paths:list, duration:int=15) -> list:
     """
@@ -69,3 +64,10 @@ def load_wav_files(paths:list, duration:int=15) -> list:
     fn = partial(_load_wav, duration)
     with ProcessPoolExecutor() as executor:
         return list(executor.map(fn, paths))
+
+class NormalizeAudio:
+    def __init__(self, wav_inputs:list=[]):
+        self.inputs = wav_inputs
+
+    def sample_rate(self, sample_rate:int=22050) -> list:
+        return list(map(lambda sample: Wav(name=sample.name, wav=sample.wav[0][:sample_rate], label=sample.label), self.inputs))
