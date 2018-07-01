@@ -1,7 +1,12 @@
 import os
 import csv
+from functools import partial
+from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from collections import namedtuple
+
 import librosa
-from concurrent.futures import ProcessPoolExecutor
+from scipy import signal, array
+import numpy as np
 
 def find_paths_with_tags(csv_path:str, files_path:str, filters:list=[], limit:int=None) -> list:
     """
@@ -34,19 +39,27 @@ def find_paths_with_tags(csv_path:str, files_path:str, filters:list=[], limit:in
         return files
 
 
-def _load_wav(wav:dict) -> dict:
-    print(f'{wav["name"]}...')
-    return { wav['name']: librosa.load(wav['path']) }
+Wav = namedtuple('Wav', 'name wav')
 
-def load_wav_files(paths:list) -> list:
+def _load_wav(duration:int, wav:dict) -> namedtuple:
     """
-    Returns a list of dictionaries
-    with loaded wave files
+    Generates a namedtuple with some metadata
+    and a librosa loaded wav file (array)
+    """
+    print(f'{wav["name"]}...')
+    return Wav(name=wav['name'], wav=librosa.load(wav['path'], duration=duration))
+
+def load_wav_files(paths:list, duration:int=15) -> list:
+    """
+    Generates list of dictionaries
+    with loaded wave files (leveraging librosa)
 
     Usage:
     train_wav_inputs = load_wav_files(paths)
-    # => [{ '1234.wav': array([]) }]
+    # => [
+        Wav(name='00353774.wav', wav=(array()),
+    ]
     """
-
+    fn = partial(_load_wav, duration)
     with ProcessPoolExecutor() as executor:
-        return list(executor.map(_load_wav, paths))
+        return list(executor.map(fn, paths))
