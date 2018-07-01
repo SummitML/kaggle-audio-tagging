@@ -1,4 +1,5 @@
 from helpers import *
+import numpy
 
 class TestHelpersMod(object):
     @classmethod
@@ -44,4 +45,4 @@ class TestHelpersMod(object):
 
         # assert wav base 0 is n dimensional array
         sample = train_wav_inputs[0]
-        assert isinstance(numpy.ndarray, sample.wav[0])
+        assert isinstance(sample.wav[0], numpy.ndarray)
