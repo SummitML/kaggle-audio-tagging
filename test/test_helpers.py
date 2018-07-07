@@ -1,5 +1,7 @@
 from helpers import *
 import numpy
+import os
+import shutil
 
 class TestHelpersMod(object):
     @classmethod
@@ -46,6 +48,45 @@ class TestHelpersMod(object):
         # assert wav base 0 is n dimensional array
         sample = train_wav_inputs[0]
         assert isinstance(sample.wav[0], numpy.ndarray)
+
+    def test_serialize_deserialize_wavs(self):
+        all_cellos = find_paths_with_tags(self.TRAIN_CSV,
+                                         self.TRAIN_FILES,
+                                         ['Cello'],
+                                         limit=2)
+
+        train_wav_inputs = load_wav_files(all_cellos)
+        train_wav_inputs = [ x.__dict__ for x in train_wav_inputs ]
+
+        serialized = serialize_wavs(train_wav_inputs)
+        wav = serialized[0]
+        assert  isinstance(wav, bytes)
+
+        deserialized = deserialize_wavs(serialized)
+        wav, _ = deserialized[0].get('wav')
+        assert isinstance(wav, numpy.ndarray)
+
+    def test_wavs_io(self):
+        all_cellos = find_paths_with_tags(self.TRAIN_CSV,
+                                         self.TRAIN_FILES,
+                                         ['Cello'],
+                                         limit=2)
+
+        train_wav_inputs = load_wav_files(all_cellos)
+        train_wav_inputs = [ x.__dict__ for x in train_wav_inputs ]
+        out_file = 'tmp/__test__.pkl'
+
+        # test file out
+        serialized = serialize_wavs(train_wav_inputs)
+        pickle_out(out_file, serialized)
+
+        with open('tmp/__test__.pkl', 'rb') as f:
+            pickle.load(f)
+
+        batched_wavs = assemble_batched_wavs('tmp')
+        assert len(batched_wavs) == 1
+
+        shutil.rmtree('tmp')
 
     def test_normalize_audio(self):
         all_cellos = find_paths_with_tags(self.TRAIN_CSV,

@@ -24,6 +24,7 @@ scikit-learn = "*"
 seaborn = "*"
 sounddevice = "*"
 librosa = "*"
+ijson = {git = "git://github.com:isagalaev/ijson.git"}
 
 [dev-packages]
 PyYAML = {path = ".\\..\\PyYAML-3.12-cp36-cp36m-win32.whl"}
