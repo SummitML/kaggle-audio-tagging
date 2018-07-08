@@ -2,16 +2,17 @@ import os
 import pickle
 from functools import partial
 from concurrent.futures import ProcessPoolExecutor, ThreadPoolExecutor
+from typing import Tuple
 
 import numpy as np
 from scipy import signal, array
 import librosa
 
 class Wav:
-    def __init__(self, name:str='', wav:np.ndarray=None, label:str=''):
-        self.name = name
-        self.wav = wav
-        self.label = label
+    def __init__(self, name:str='', wav:Tuple[np.ndarray, int]=None, label:str=''):
+        self.name:str = name
+        self.wav:tuple = wav
+        self.label:str = label
 
 def _load_wav(duration:int, wav:dict) -> Wav:
     """

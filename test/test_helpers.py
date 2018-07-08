@@ -1,5 +1,5 @@
 from helpers import *
-import numpy
+import numpy as np
 import os
 import shutil
 
@@ -47,7 +47,7 @@ class TestHelpersMod(object):
 
         # assert wav base 0 is n dimensional array
         sample = train_wav_inputs[0]
-        assert isinstance(sample.wav[0], numpy.ndarray)
+        assert isinstance(sample.wav[0], np.ndarray)
 
     def test_serialize_deserialize_wavs(self):
         all_cellos = find_paths_with_tags(self.TRAIN_CSV,
@@ -64,7 +64,7 @@ class TestHelpersMod(object):
 
         deserialized = deserialize_wavs(serialized)
         wav, _ = deserialized[0].get('wav')
-        assert isinstance(wav, numpy.ndarray)
+        assert isinstance(wav, np.ndarray)
 
     def test_wavs_io(self):
         all_cellos = find_paths_with_tags(self.TRAIN_CSV,
@@ -91,11 +91,13 @@ class TestHelpersMod(object):
     def test_normalize_audio(self):
         all_cellos = find_paths_with_tags(self.TRAIN_CSV,
                                          self.TRAIN_FILES,
-                                         ['Cello'],
+                                         ['Snare_drum'],
                                          limit=2)
 
         train_wav_inputs = load_wav_files(all_cellos)
 
         normalizer = NormalizeAudio(train_wav_inputs)
         train_wav_inputs_1s = normalizer.sample_rate(22050)
-        assert [x.wav.shape[0] for x in train_wav_inputs_1s] == [22050, 22050]
+        assert isinstance(train_wav_inputs_1s[0].wav, tuple)
+        assert isinstance(train_wav_inputs_1s[0].wav[0], np.ndarray)
+        assert [x.wav[0].shape[0] for x in train_wav_inputs_1s] == [22050, 22050]
